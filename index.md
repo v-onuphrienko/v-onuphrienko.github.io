@@ -14,15 +14,15 @@
             display: flex;
             font-family: Arial, sans-serif;
             margin: 0;
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: #000; /* Черный фон */
+            color: #fff; /* Белый текст */
             overflow: hidden; /* Отключить прокрутку для тела, для настройки боковой панели */
         }
         
         /* Боковая панель */
         .sidebar {
             min-width: 250px;
-            background: linear-gradient(180deg, #333, #575757);
+            background: #1c1c1c; /* Темно-серый цвет боковой панели */
             color: #fff;
             height: 100vh;
             position: fixed;
@@ -57,7 +57,7 @@
             transition: background-color 0.3s ease;
         }
         .sidebar a:hover {
-            background-color: #777; /* Изменение цвета при наведении */
+            background-color: #575757; /* Изменение цвета при наведении */
         }
 
         /* Основное содержимое */
@@ -69,16 +69,16 @@
             height: 100vh;
             overflow-y: auto; /* Прокрутка основного содержимого */
             scrollbar-width: thin;
-            scrollbar-color: #ccc #f4f4f9;
+            scrollbar-color: #ccc #000; /* Цвет скроллбара */
         }
         .content::-webkit-scrollbar {
             width: 10px;
         }
         .content::-webkit-scrollbar-track {
-            background: #f4f4f9;
+            background: #000; /* Цвет фона скроллбара */
         }
         .content::-webkit-scrollbar-thumb {
-            background: #ccc;
+            background: #ccc; /* Цвет ползунка */
             border-radius: 10px;
         }
         .content h1 {
@@ -94,16 +94,16 @@
             height: 500px; /* Увеличенная высота секций для тестирования прокрутки */
         }
         #portfolio {
-            background-color: #e0f7fa; /* Светло-голубой */
+            background-color: #1a1a1a; /* Темно-серый */
         }
         #webapps_docs {
-            background-color: #ffe0b2; /* Светло-оранжевый */
+            background-color: #2c2c2c; /* Серый */
         }
         #projects {
-            background-color: #f1f8e9; /* Светло-зеленый */
+            background-color: #3c3c3c; /* Светло-серый */
         }
         #contacts {
-            background-color: #fce4ec; /* Светло-розовый */
+            background-color: #4c4c4c; /* Еще светлее серый */
         }
     </style>
 </head>
@@ -125,6 +125,23 @@
         <section id="portfolio" class="section">
             <h2>Портфолио</h2>
             <p>Здесь можно найти мои работы и примеры проектов.</p>
+            <!-- Информация о вас -->
+            <h3>Онуфриенко Владислав</h3>
+            <p>Я специалист в области Data Science с опытом разработки и внедрения моделей машинного обучения. Участвую в соревнованиях на Kaggle и активно делюсь знаниями, посещая мероприятия и конференции в IT-сфере. Готов к новым вызовам и стремлюсь внести вклад в         успешное развитие проектов.</p>
+            <h4>Опыт работы</h4>
+            <ul>
+                <li><strong>Ведущий специалист по цифровым технологиям аудита</strong> – ПАО Сбербанк (Март 2024 – настоящее время)</li>
+                <li><strong>Data Scientist</strong> – Московская Объединенная Энергетическая Компания (Май 2023 – Март 2024)</li>
+                <li><strong>Специалист по восстановлению документации и планированию</strong> – Полюс Магадан (Июль 2021 – Ноябрь 2021)</li>
+                <li><strong>Специалист участка подготовки непрофильных деталей и компонентов</strong> – Модерн Машинери Фар Ист (Сентябрь 2018 – Апрель 2021)</li>
+            </ul>
+            <h4>Образование</h4>
+            <ul>
+                <li><strong>Магистр</strong>, Уральский федеральный университет имени первого Президента России Б.Н. Ельцина (2024)</li>
+                <li><strong>Бакалавр</strong>, Российская академия народного хозяйства и государственной службы при Президенте РФ (2018)</li>
+            </ul>
+            <h4>Навыки</h4>
+            <p>Python, SQL, Tableau, DataLens, MLFlow, ClearML, DVC, разработка нейронных сетей, глубокое обучение, математический и статистический анализ, PostgreSQL, Oracle, MySQL, Docker, Airflow</p>
         </section>
         
         <section id="webapps_docs" class="section">
@@ -150,6 +167,7 @@
                 <img src="https://img.shields.io/badge/LinkedIn-Vladislav_Onuphrienko-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
             </a>
         </section>
+
     </div>
 </body>
 </html>
