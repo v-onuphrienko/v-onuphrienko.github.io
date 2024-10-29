@@ -12,11 +12,13 @@
         }
         body {
             display: flex;
+            flex-direction: row; /* Явно указываем направление Flexbox */
             font-family: Arial, sans-serif;
             margin: 0;
             background-color: #000; /* Черный фон */
             color: #fff; /* Белый текст */
-            overflow: hidden; /* Отключить прокрутку для тела, для настройки боковой панели */
+            overflow-x: hidden; /* Отключить горизонтальную прокрутку */
+            min-height: 100vh; /* Обеспечить минимальную высоту тела */
         }
         
         /* Боковая панель */
@@ -32,6 +34,7 @@
             overflow-y: auto; /* Прокрутка внутри бокового меню */
             scrollbar-width: thin; /* Тонкий скроллбар для Firefox */
             scrollbar-color: #999 #333; /* Цвет скроллбара для Firefox */
+            transition: transform 0.3s ease; /* Плавное открытие/закрытие на мобильных */
         }
         .sidebar::-webkit-scrollbar {
             width: 8px; /* Ширина скроллбара */
@@ -60,16 +63,32 @@
             background-color: #575757; /* Изменение цвета при наведении */
         }
 
+        /* Кнопка для мобильных устройств */
+        .sidebar-toggle {
+            display: none; /* Скрыта по умолчанию */
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #1c1c1c;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            z-index: 1001;
+            border-radius: 4px;
+        }
+
         /* Основное содержимое */
         .content {
-            margin-left: 270px;
+            margin-left: 270px; /* Отступ для боковой панели */
             padding: 20px;
             max-width: 800px;
             width: calc(100% - 270px);
-            height: 100vh;
+            min-height: 100vh; /* Обеспечить минимальную высоту содержимого */
             overflow-y: auto; /* Прокрутка основного содержимого */
             scrollbar-width: thin;
             scrollbar-color: #ccc #000; /* Цвет скроллбара */
+            transition: margin-left 0.3s ease; /* Плавное изменение отступа на мобильных */
         }
         .content::-webkit-scrollbar {
             width: 10px;
@@ -91,7 +110,7 @@
             padding: 40px; /* Увеличенные отступы */
             border-radius: 8px;
             margin-bottom: 20px;
-            height: 500px; /* Увеличенная высота секций для тестирования прокрутки */
+            min-height: 500px; /* Изменено с фиксированной высоты на минимальную */
         }
         #portfolio {
             background-color: #1a1a1a; /* Темно-серый */
@@ -105,10 +124,39 @@
         #contacts {
             background-color: #4c4c4c; /* Еще светлее серый */
         }
+
+        /* Медиазапросы для адаптивности */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100vh;
+                transform: translateX(-100%); /* Скрыть боковую панель по умолчанию */
+                z-index: 1000;
+            }
+            .sidebar.active {
+                transform: translateX(0); /* Показать боковую панель при активном классе */
+            }
+            .sidebar-toggle {
+                display: block; /* Показать кнопку на мобильных */
+            }
+            .content {
+                margin-left: 0; /* Убрать отступ для боковой панели */
+                width: 100%;
+            }
+            .section {
+                padding: 20px; /* Уменьшенные отступы на мобильных */
+                min-height: auto; /* Автоматическая высота */
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="sidebar">
+    <!-- Кнопка для открытия боковой панели на мобильных устройствах -->
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰ Меню</button>
+
+    <div class="sidebar" id="sidebar">
         <h2>Навигация</h2>
         <a href="#portfolio">Портфолио</a>
         <a href="#webapps_docs">Документация WebApps</a>
@@ -127,13 +175,11 @@
             <p>Здесь можно найти мои работы и примеры проектов.</p>
             <!-- Информация о вас -->
             <h3>Онуфриенко Владислав</h3>
-            <p>Я специалист в области Data Science с опытом разработки и внедрения моделей машинного обучения. Участвую в соревнованиях на Kaggle и активно делюсь знаниями, посещая мероприятия и конференции в IT-сфере. Готов к новым вызовам и стремлюсь внести вклад в         успешное развитие проектов.</p>
+            <p>Я специалист в области Data Science с опытом разработки и внедрения моделей машинного обучения. Участвую в соревнованиях на Kaggle и активно делюсь знаниями, посещая мероприятия и конференции в IT-сфере. Готов к новым вызовам и стремлюсь внести вклад в успешное развитие проектов.</p>
             <h4>Опыт работы</h4>
             <ul>
                 <li><strong>Ведущий специалист по цифровым технологиям аудита</strong> – ПАО Сбербанк (Март 2024 – настоящее время)</li>
                 <li><strong>Data Scientist</strong> – Московская Объединенная Энергетическая Компания (Май 2023 – Март 2024)</li>
-                <li><strong>Специалист по восстановлению документации и планированию</strong> – Полюс Магадан (Июль 2021 – Ноябрь 2021)</li>
-                <li><strong>Специалист участка подготовки непрофильных деталей и компонентов</strong> – Модерн Машинери Фар Ист (Сентябрь 2018 – Апрель 2021)</li>
             </ul>
             <h4>Образование</h4>
             <ul>
@@ -167,7 +213,23 @@
                 <img src="https://img.shields.io/badge/LinkedIn-Vladislav_Onuphrienko-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
             </a>
         </section>
-
     </div>
+
+    <script>
+        // Функция для переключения боковой панели на мобильных устройствах
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Закрытие боковой панели при клике вне ее области
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const toggleButton = document.querySelector('.sidebar-toggle');
+            if (!sidebar.contains(event.target) && !toggleButton.contains(event.target) && sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
