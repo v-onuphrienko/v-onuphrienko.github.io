@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -181,8 +180,12 @@
     <button class="language-switcher" onclick="switchLanguage()">EN / RU</button>
 
     <div class="sidebar" id="sidebar">
-        <h2>Навигация</h2>
-        <a href="#portfolio" class="lang-ru">Портфолио</a>
+        <!-- Дублирование заголовка навигации для обоих языков -->
+        <h2 class="lang-ru lang-active">Навигация</h2>
+        <h2 class="lang-en">Navigation</h2>
+
+        <!-- Навигационные ссылки -->
+        <a href="#portfolio" class="lang-ru lang-active">Портфолио</a>
         <a href="#webapps_docs" class="lang-ru">Документация WebApps</a>
         <a href="#projects" class="lang-ru">Проекты</a>
         <a href="#contacts" class="lang-ru">Контакты</a>
@@ -194,6 +197,7 @@
     </div>
 
     <div class="content">
+        <!-- Заголовки и параграфы для обоих языков -->
         <h1 class="lang-ru lang-active">Добро пожаловать на мой сайт!</h1>
         <h1 class="lang-en">Welcome to my website!</h1>
 
@@ -240,7 +244,18 @@
                 <li class="lang-en">
                     <strong>Data Scientist</strong> – Moscow United Energy Company (May 2023 – March 2024)
                 </li>
-                <!-- Добавьте остальные элементы списка аналогичным образом -->
+                <li class="lang-ru lang-active">
+                    <strong>Специалист по восстановлению документации и планированию</strong> – Полюс Магадан (Июль 2021 – Ноябрь 2021)
+                </li>
+                <li class="lang-en">
+                    <strong>Documentation and Planning Specialist</strong> – Polyus Magadan (July 2021 – November 2021)
+                </li>
+                <li class="lang-ru lang-active">
+                    <strong>Специалист участка подготовки непрофильных деталей и компонентов</strong> – Модерн Машинери Фар Ист (Сентябрь 2018 – Апрель 2021)
+                </li>
+                <li class="lang-en">
+                    <strong>Non-profile Parts and Components Preparation Specialist</strong> – Modern Machinery Far East (September 2018 – April 2021)
+                </li>
             </ul>
 
             <h4 class="lang-ru lang-active">Образование</h4>
@@ -252,7 +267,12 @@
                 <li class="lang-en">
                     <strong>Master's Degree</strong>, Ural Federal University named after the first President of Russia B.N. Yeltsin (2024)
                 </li>
-                <!-- Добавьте остальные элементы списка аналогичным образом -->
+                <li class="lang-ru lang-active">
+                    <strong>Бакалавр</strong>, Российская академия народного хозяйства и государственной службы при Президенте РФ (2018)
+                </li>
+                <li class="lang-en">
+                    <strong>Bachelor's Degree</strong>, Russian Academy of National Economy and Public Administration under the President of the Russian Federation (2018)
+                </li>
             </ul>
 
             <h4 class="lang-ru lang-active">Навыки</h4>
@@ -308,7 +328,7 @@
             sidebar.classList.toggle('active');
         }
 
-        // Закрытие боковой панели при клике вне ее области
+        // Закрытие боковой панели при клике вне её области
         document.addEventListener('click', function(event) {
             const sidebar = document.getElementById('sidebar');
             const toggleButton = document.querySelector('.sidebar-toggle');
@@ -321,6 +341,7 @@
         function switchLanguage() {
             const elementsRu = document.querySelectorAll('.lang-ru');
             const elementsEn = document.querySelectorAll('.lang-en');
+            const languageSwitcher = document.querySelector('.language-switcher');
             const currentLang = localStorage.getItem('language') || 'ru';
 
             if (currentLang === 'ru') {
@@ -328,11 +349,13 @@
                 elementsRu.forEach(el => el.classList.remove('lang-active'));
                 elementsEn.forEach(el => el.classList.add('lang-active'));
                 localStorage.setItem('language', 'en');
+                languageSwitcher.textContent = 'RU / EN';
             } else {
                 // Переключение на русский
                 elementsEn.forEach(el => el.classList.remove('lang-active'));
                 elementsRu.forEach(el => el.classList.add('lang-active'));
                 localStorage.setItem('language', 'ru');
+                languageSwitcher.textContent = 'EN / RU';
             }
         }
 
@@ -341,13 +364,16 @@
             const savedLang = localStorage.getItem('language') || 'ru';
             const elementsRu = document.querySelectorAll('.lang-ru');
             const elementsEn = document.querySelectorAll('.lang-en');
+            const languageSwitcher = document.querySelector('.language-switcher');
 
             if (savedLang === 'ru') {
                 elementsRu.forEach(el => el.classList.add('lang-active'));
                 elementsEn.forEach(el => el.classList.remove('lang-active'));
+                languageSwitcher.textContent = 'EN / RU';
             } else {
                 elementsEn.forEach(el => el.classList.add('lang-active'));
                 elementsRu.forEach(el => el.classList.remove('lang-active'));
+                languageSwitcher.textContent = 'RU / EN';
             }
         });
     </script>
