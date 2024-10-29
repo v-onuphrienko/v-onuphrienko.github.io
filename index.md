@@ -338,23 +338,20 @@
         });
 
         // Функция для переключения языка
-// Функция для переключения языка
         function switchLanguage() {
-            const elementsRu = document.querySelectorAll('.lang-ru');
-            const elementsEn = document.querySelectorAll('.lang-en');
-            const languageSwitcher = document.querySelector('.language-switcher');
             const currentLang = localStorage.getItem('language') || 'ru';
+            const languageSwitcher = document.querySelector('.language-switcher');
         
             if (currentLang === 'ru') {
                 // Переключение на английский
-                elementsRu.forEach(el => el.classList.remove('lang-active'));
-                elementsEn.forEach(el => el.classList.add('lang-active'));
+                document.querySelectorAll('.lang-ru').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'block');
                 localStorage.setItem('language', 'en');
                 languageSwitcher.textContent = 'RU / EN';
             } else {
                 // Переключение на русский
-                elementsEn.forEach(el => el.classList.remove('lang-active'));
-                elementsRu.forEach(el => el.classList.add('lang-active'));
+                document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.lang-ru').forEach(el => el.style.display = 'block');
                 localStorage.setItem('language', 'ru');
                 languageSwitcher.textContent = 'EN / RU';
             }
@@ -363,17 +360,15 @@
         // Инициализация языка при загрузке страницы
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('language') || 'ru';
-            const elementsRu = document.querySelectorAll('.lang-ru');
-            const elementsEn = document.querySelectorAll('.lang-en');
             const languageSwitcher = document.querySelector('.language-switcher');
         
             if (savedLang === 'ru') {
-                elementsRu.forEach(el => el.classList.add('lang-active'));
-                elementsEn.forEach(el => el.classList.remove('lang-active'));
+                document.querySelectorAll('.lang-ru').forEach(el => el.style.display = 'block');
+                document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'none');
                 languageSwitcher.textContent = 'EN / RU';
             } else {
-                elementsEn.forEach(el => el.classList.add('lang-active'));
-                elementsRu.forEach(el => el.classList.remove('lang-active'));
+                document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'block');
+                document.querySelectorAll('.lang-ru').forEach(el => el.style.display = 'none');
                 languageSwitcher.textContent = 'RU / EN';
             }
         });
