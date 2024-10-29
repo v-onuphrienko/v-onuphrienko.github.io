@@ -338,12 +338,13 @@
         });
 
         // Функция для переключения языка
+// Функция для переключения языка
         function switchLanguage() {
             const elementsRu = document.querySelectorAll('.lang-ru');
             const elementsEn = document.querySelectorAll('.lang-en');
             const languageSwitcher = document.querySelector('.language-switcher');
             const currentLang = localStorage.getItem('language') || 'ru';
-
+        
             if (currentLang === 'ru') {
                 // Переключение на английский
                 elementsRu.forEach(el => el.classList.remove('lang-active'));
@@ -358,14 +359,14 @@
                 languageSwitcher.textContent = 'EN / RU';
             }
         }
-
+        
         // Инициализация языка при загрузке страницы
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('language') || 'ru';
             const elementsRu = document.querySelectorAll('.lang-ru');
             const elementsEn = document.querySelectorAll('.lang-en');
             const languageSwitcher = document.querySelector('.language-switcher');
-
+        
             if (savedLang === 'ru') {
                 elementsRu.forEach(el => el.classList.add('lang-active'));
                 elementsEn.forEach(el => el.classList.remove('lang-active'));
