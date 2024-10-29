@@ -85,6 +85,26 @@
             font-size: 2em;
             margin-top: 0;
         }
+
+        /* Цвета для секций */
+        .section {
+            padding: 40px; /* Увеличенные отступы */
+            border-radius: 8px;
+            margin-bottom: 20px;
+            height: 500px; /* Увеличенная высота секций для тестирования прокрутки */
+        }
+        #portfolio {
+            background-color: #e0f7fa; /* Светло-голубой */
+        }
+        #webapps_docs {
+            background-color: #ffe0b2; /* Светло-оранжевый */
+        }
+        #projects {
+            background-color: #f1f8e9; /* Светло-зеленый */
+        }
+        #contacts {
+            background-color: #fce4ec; /* Светло-розовый */
+        }
     </style>
 </head>
 <body>
@@ -101,34 +121,33 @@
         <p>Здесь я размещу информацию о себе, моих проектах и документацию по WebApps.</p>
         <p>Выберите раздел слева, чтобы узнать больше.</p>
         
-        <!-- Добавлены якоря для каждой секции -->
-        <section id="portfolio">
+        <!-- Секции с разными цветами -->
+        <section id="portfolio" class="section">
             <h2>Портфолио</h2>
             <p>Здесь можно найти мои работы и примеры проектов.</p>
         </section>
         
-        <section id="webapps_docs">
+        <section id="webapps_docs" class="section">
             <h2>Документация WebApps</h2>
             <p>Информация и инструкции по работе с Telegram WebApps.</p>
         </section>
         
-        <section id="projects">
+        <section id="projects" class="section">
             <h2>Проекты</h2>
             <p>Проекты, над которыми я работал, и их описание.</p>
         </section>
         
-        <section id="contacts">
+        <section id="contacts" class="section">
             <h2>Контакты</h2>
-            <!-- Вставь содержимое из contacts.md здесь -->
-            <p>Вы можете связаться со мной через следующие платформы:</p>
+            <p>Связаться со мной можно через следующие платформы:</p>
+            <a href="https://github.com/v-onuphrienko" target="_blank">
+                <img src="https://img.shields.io/badge/GitHub-Onufrienko_V.I.-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+            </a>
             <a href="https://t.me/onuphrienko" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Telegram_logo.svg" alt="Telegram" style="width: 40px; height: 40px; margin-right: 10px;">
+                <img src="https://img.shields.io/badge/Telegram-@onuphrienko-0088cc?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram">
             </a>
             <a href="https://www.linkedin.com/in/onuphrienko/" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg" alt="LinkedIn" style="width: 40px; height: 40px; margin-right: 10px;">
-            </a>
-            <a href="https://github.com/v-onuphrienko" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub" style="width: 40px; height: 40px; margin-right: 10px;">
+                <img src="https://img.shields.io/badge/LinkedIn-Vladislav_Onuphrienko-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
             </a>
         </section>
     </div>
