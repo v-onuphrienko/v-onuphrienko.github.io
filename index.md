@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -11,11 +10,14 @@
             scroll-behavior: smooth; /* Плавная прокрутка */
         }
         body {
+            display: flex;
+            flex-direction: row; /* Явно указываем направление Flexbox */
             font-family: Arial, sans-serif;
             margin: 0;
             background-color: #000; /* Черный фон */
             color: #fff; /* Белый текст */
             overflow-x: hidden; /* Отключить горизонтальную прокрутку */
+            min-height: 100vh; /* Обеспечить минимальную высоту тела */
         }
         
         /* Боковая панель */
@@ -29,34 +31,132 @@
             left: 0;
             padding: 20px;
             overflow-y: auto; /* Прокрутка внутри бокового меню */
+            scrollbar-width: thin; /* Тонкий скроллбар для Firefox */
+            scrollbar-color: #999 #333; /* Цвет скроллбара для Firefox */
+            transition: transform 0.3s ease; /* Плавное открытие/закрытие на мобильных */
         }
-        
+        .sidebar::-webkit-scrollbar {
+            width: 8px; /* Ширина скроллбара */
+        }
+        .sidebar::-webkit-scrollbar-track {
+            background: #333; /* Цвет фона скроллбара */
+        }
+        .sidebar::-webkit-scrollbar-thumb {
+            background: #999; /* Цвет ползунка */
+            border-radius: 10px; /* Скругленные края ползунка */
+        }
+        .sidebar h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        .sidebar a {
+            display: block;
+            color: #ddd;
+            padding: 12px 18px;
+            margin: 5px 0;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .sidebar a:hover {
+            background-color: #575757; /* Изменение цвета при наведении */
+        }
+
+        /* Кнопка для мобильных устройств */
+        .sidebar-toggle {
+            display: none; /* Скрыта по умолчанию */
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #1c1c1c;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            z-index: 1001;
+            border-radius: 4px;
+        }
+
         /* Основное содержимое */
         .content {
             margin-left: 270px; /* Отступ для боковой панели */
             padding: 20px;
+            max-width: 800px;
+            width: calc(100% - 270px);
             min-height: 100vh; /* Обеспечить минимальную высоту содержимого */
+            overflow-y: auto; /* Прокрутка основного содержимого */
+            scrollbar-width: thin;
+            scrollbar-color: #ccc #000; /* Цвет скроллбара */
+            transition: margin-left 0.3s ease; /* Плавное изменение отступа на мобильных */
         }
-        
-        /* Стили для секций */
-        .section {
-            padding: 40px;
-            margin-bottom: 20px;
-            min-height: 100vh; /* Каждая секция занимает весь экран */
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+        .content::-webkit-scrollbar {
+            width: 10px;
         }
-        .section.active {
-            opacity: 1;
-            transform: translateY(0);
+        .content::-webkit-scrollbar-track {
+            background: #000; /* Цвет фона скроллбара */
+        }
+        .content::-webkit-scrollbar-thumb {
+            background: #ccc; /* Цвет ползунка */
+            border-radius: 10px;
+        }
+        .content h1 {
+            font-size: 2em;
+            margin-top: 0;
         }
 
         /* Цвета для секций */
-        #portfolio { background-color: #1a1a1a; }
-        #webapps_docs { background-color: #2c2c2c; }
-        #projects { background-color: #3c3c3c; }
-        #contacts { background-color: #4c4c4c; }
+        .section {
+            padding: 40px; /* Увеличенные отступы */
+            border-radius: 8px;
+            margin-bottom: 20px;
+            min-height: 500px; /* Изменено с фиксированной высоты на минимальную */
+        }
+        #portfolio {
+            background-color: #1a1a1a; /* Темно-серый */
+        }
+        #webapps_docs {
+            background-color: #2c2c2c; /* Серый */
+        }
+        #projects {
+            background-color: #3c3c3c; /* Светло-серый */
+        }
+        #contacts {
+            background-color: #4c4c4c; /* Еще светлее серый */
+        }
+
+        /* Медиазапросы для адаптивности */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100vh;
+                transform: translateX(-100%); /* Скрыть боковую панель по умолчанию */
+                z-index: 1000;
+            }
+            .sidebar.active {
+                transform: translateX(0); /* Показать боковую панель при активном классе */
+            }
+            .sidebar-toggle {
+                display: block; /* Показать кнопку на мобильных */
+            }
+            .content {
+                margin-left: 0; /* Убрать отступ для боковой панели */
+                width: 100%;
+            }
+            .section {
+                padding: 20px; /* Уменьшенные отступы на мобильных */
+                min-height: auto; /* Автоматическая высота */
+            }
+        }
+
+        /* Стили для скрытия языковых блоков */
+        .lang-en, .lang-ru {
+            display: none;
+        }
+        .lang-active {
+            display: block;
+        }
 
         /* Кнопка переключения языка */
         .language-switcher {
