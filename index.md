@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onufrienko Portfolio</title>
+    <title>Portfolio</title>
     <style>
         /* Основные стили */
         * {
@@ -104,19 +104,7 @@
         <!-- Добавлены якоря для каждой секции -->
         <section id="portfolio">
             <h2>Портфолио</h2>
-            <p>Здесь можно найти мои работы и примеры проектов.
-            .
-            .
-            .
-            .
-            .
-            .
-            .
-            .
-            .
-            .
-            .
-            .</p>
+            <p>Здесь можно найти мои работы и примеры проектов.</p>
         </section>
         
         <section id="webapps_docs">
@@ -131,7 +119,17 @@
         
         <section id="contacts">
             <h2>Контакты</h2>
-            <p>Связаться со мной можно через Telegram: <a href="https://t.me/onuphrienko" style="color: #333;">@onuphrienko</a>.</p>
+            <!-- Вставь содержимое из contacts.md здесь -->
+            <p>Вы можете связаться со мной через следующие платформы:</p>
+            <a href="https://t.me/onuphrienko" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Telegram_logo.svg" alt="Telegram" style="width: 40px; height: 40px; margin-right: 10px;">
+            </a>
+            <a href="https://www.linkedin.com/in/onuphrienko/" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg" alt="LinkedIn" style="width: 40px; height: 40px; margin-right: 10px;">
+            </a>
+            <a href="https://github.com/v-onuphrienko" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub" style="width: 40px; height: 40px; margin-right: 10px;">
+            </a>
         </section>
     </div>
 </body>
