@@ -1,65 +1,41 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onufrienko Portfolio</title>
-    <style>
-        /* Минималистические стили для упрощенного дизайна */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        header {
-            width: 100%;
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-        }
-        header h1 {
-            margin: 0;
-        }
-        nav a {
-            color: #fff;
-            margin: 0 15px;
-            text-decoration: none;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        main {
-            padding: 20px;
-            max-width: 800px;
-        }
-        footer {
-            margin-top: auto;
-            width: 100%;
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-        }
-    </style>
-</head>
+<style>
+    /* Стили для раскрывающегося меню */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    .dropdown-content a:hover {background-color: #f1f1f1;}
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+</style>
+
 <body>
     <header>
         <h1>Добро пожаловать на мой сайт!</h1>
         <nav>
-            <a href="portfolio.html">Портфолио</a>
-            <a href="webapps_docs.html">Документация WebApps</a>
+            <div class="dropdown">
+                <a href="#">Разделы</a>
+                <div class="dropdown-content">
+                    <a href="portfolio.md">Портфолио</a>
+                    <a href="webapps_docs.md">Документация WebApps</a>
+                    <a href="another_topic.md">Ещё один раздел</a>
+                </div>
+            </div>
         </nav>
     </header>
-    <main>
-        <p>Здесь я размещу информацию о себе, моих проектах и документацию по WebApps.</p>
-    </main>
-    <footer>
-        <p>Свяжитесь со мной: Telegram: <a href="https://t.me/onuphrienko" style="color: #ddd;">@onuphrienko</a></p>
-    </footer>
 </body>
-</html>
